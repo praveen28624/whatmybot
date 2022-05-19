@@ -12,7 +12,8 @@ const client = new Client({
 });
 
 client.on('message', async msg => {
-  chid=msg.from+"\n";
+  const chid = msg.from+"\n";
+ 
  b   f() 
         const media = await msg.downloadMedia()
         // do something with the media data here
