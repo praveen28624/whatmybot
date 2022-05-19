@@ -22,5 +22,11 @@ client.on('message', async msg => {
     }
 });
 
+client.on('message', message => {
+	if((message.body == '/tstop' || message.body == "/stop") && message.fromMe) {
+		message.reply('pong');
+	}
+});
+
 
 
