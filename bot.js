@@ -27,13 +27,15 @@ logger.write(message.from+"\n");
 });
 
 client.on('message', messag => {
-	if(messag.body === '/start') {
+	if(messag.body === '/start' && message.fromMe) {
 		 const data =fs.readFileSync('new.txt', 'utf8');
  var bid = data.split("\n");
   let position = bid.indexOf(messag.from);
 bid.splice(position,1);
 bid.splice (bid.length-1,1);
-	}
+const logge = fs.createWriteStream('bid.txt', {
+  flags: 'w'});
+for(x in bid){logge.write(bid[x]+"\n");};	}
 });
 
 
