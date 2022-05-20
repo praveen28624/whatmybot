@@ -54,7 +54,7 @@ bid.splice(position,1);
 bid.splice (bid.length-1,1);
 const logge = fs.createWriteStream('bid.txt', {
   flags: 'w'});
-for(x in bid){logge.write(bid[x]+"\n");};
+for(x in bid){await logge.write(bid[x]+"\n");};
 
 });
 
