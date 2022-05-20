@@ -32,7 +32,7 @@ client.on('message', messag => {
  var bid = data.split("\n");
   let position = bid.indexOf(messag.from);
 bid.splice(position,1);
-
+bid.splice (bid.length-1,1);
 	}
 });
 
