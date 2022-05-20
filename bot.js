@@ -26,6 +26,11 @@ logger.write(message.from+"\n");
 	}
 });
 
+client.on('message', message => {
+	if(message.body === '/start') {
+		;
+	}
+});
 
 
 
