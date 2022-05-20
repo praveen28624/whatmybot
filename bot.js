@@ -11,12 +11,9 @@ const client = new Client({
 });
 
 client.on('message', async msg => {
-  const chid = msg.from+"\n";
+  let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
+ var bid = data.split("\n");
  
- b   f() 
-        const media = await msg.downloadMedia()
-        // do something with the media data here
-    }
 });
 
 client.on('message', message => {
@@ -47,7 +44,7 @@ function sleep(ms) {
 client.on('message', async mssg => {
 if(mssg.body === '/tstop' && mssg.fromMe) {
 await sleep(900000);
-		 let data = await fs.readFile('bid.txt', { encoding: 'utf8' });
+		 let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
   let position = bid.indexOf(mssg.from);
 bid.splice(position,1);
