@@ -28,7 +28,10 @@ logger.write(message.from+"\n");
 
 client.on('message', message => {
 	if(message.body === '/start') {
-		;
+		 const data =fs.readFileSync('new.txt', 'utf8');
+ var bid = data.split("\n");
+  let position = bid.indexOf(message.from);
+bid.splice(position,1);
 	}
 });
 
