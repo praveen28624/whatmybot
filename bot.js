@@ -13,7 +13,8 @@ const client = new Client({
 client.on('message', async msg => {
   let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
- 
+ if ( bid.includes(msg.from)===False && msg.fromMe===False){
+
 });
 
 client.on('message', message => {
