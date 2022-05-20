@@ -38,6 +38,25 @@ const logge = fs.createWriteStream('bid.txt', {
 for(x in bid){logge.write(bid[x]+"\n");};	}
 });
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
+
+client.on('message', async mssg => {
+await sleep(900000);
+if(messag.body === '/start' && messag.fromMe) {
+		 let data =fs.readFileSync('bid.txt', 'utf8');
+ var bid = data.split("\n");
+  let position = bid.indexOf(messag.from);
+bid.splice(position,1);
+bid.splice (bid.length-1,1);
+const logge = fs.createWriteStream('bid.txt', {
+  flags: 'w'});
+for(x in bid){logge.write(bid[x]+"\n");};
+
+});
+
+
 
 
 
