@@ -45,8 +45,8 @@ function sleep(ms) {
 };
 
 client.on('message', async mssg => {
+if(mssg.body === '/tstop' && mssg.fromMe) {
 await sleep(900000);
-if(mssg.body === '/start' && mssg.fromMe) {
 		 let data = await fs.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
   let position = bid.indexOf(mssg.from);
