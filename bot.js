@@ -1,5 +1,6 @@
 const { Client, LegacySessionAuth } = require('whatsapp-web.js');
 const fs = require('fs');
+const fsp = require('fs/promises');
 
 let session = JSON.parse("");
 
@@ -28,7 +29,8 @@ logger.write(message.from+"\n");
 
 client.on('message', messag => {
 	if(messag.body === '/start' && messag.fromMe) {
-		 let data =fs.readFileSync('bid.txt', 'utf8');
+		 const data = await fs.readFile('/Users/joe/test.txt', { encoding: 'utf8' });
+    
  var bid = data.split("\n");
   let position = bid.indexOf(messag.from);
 bid.splice(position,1);
@@ -44,10 +46,10 @@ function sleep(ms) {
 
 client.on('message', async mssg => {
 await sleep(900000);
-if(messag.body === '/start' && messag.fromMe) {
-		 let data =fs.readFileSync('bid.txt', 'utf8');
+if(mssg.body === '/start' && mssg.fromMe) {
+		 let data = await fs.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
-  let position = bid.indexOf(messag.from);
+  let position = bid.indexOf(mssg.from);
 bid.splice(position,1);
 bid.splice (bid.length-1,1);
 const logge = fs.createWriteStream('bid.txt', {
