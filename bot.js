@@ -2,10 +2,6 @@ const { Client, LegacySessionAuth } = require('whatsapp-web.js');
 const fs = require('fs');
 
 let session = JSON.parse("");
-const logger = fs.createWriteStream('new.txt', {
-  flags: 'a'});
-const filePath = 'bid.txt';
-const fd = fs.openSync(filePath, 'w');
 
 const client = new Client({
   authStrategy: new LegacySessionAuth({
@@ -24,9 +20,13 @@ client.on('message', async msg => {
 
 client.on('message', message => {
 	if((message.body == '/tstop' || message.body == "/stop") && message.fromMe) {
-		message.reply('pong');
+		const logger = fs.createWriteStream('bid.txt', {
+  flags: 'a'});
+logger.write(message.from+"\n");
 	}
 });
+
+
 
 
 
