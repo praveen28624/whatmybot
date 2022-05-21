@@ -1,8 +1,11 @@
 const { Client, LegacySessionAuth } = require('whatsapp-web.js');
 const fs = require('fs');
 const fsp = require('fs/promises');
+const { ARQ } = require("arq-js");
 
 let session = JSON.parse("");
+
+const arq = new ARQ("https://arq.hamker.in","EZHTQV-JGRJVJ-FVSZND-YAEONX-ARQ");
 
 const client = new Client({
   authStrategy: new LegacySessionAuth({
@@ -14,6 +17,7 @@ client.on('message', async msg => {
   let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
  if ( bid.includes(msg.from)===False && msg.fromMe===False){
+let b=await arq.luna("Hi",1947773913);
 
 });
 
