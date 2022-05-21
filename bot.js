@@ -17,8 +17,8 @@ client.on('message', async msg => {
   let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
  if ( bid.includes(msg.from)===False && msg.fromMe===False){
-let b=await arq.luna("Hi",1947773913);
-
+let b=await arq.luna(msg.body,1947773913);
+await msg.reply(b);
 });
 
 client.on('message', message => {
