@@ -20,7 +20,7 @@ client.on('message', async msg => {
 let rs=await arq.translate(msg.body,"en");
 let b=await arq.luna(rs["translatedText"],1947773913);
 let nrs=await arq.translate(b,"si");
-await msg.reply(nrs["translatedText"]);
+await msg.reply(nrs["translatedText"]);}
 });
 
 client.on('message', message => {
