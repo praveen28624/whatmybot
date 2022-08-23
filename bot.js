@@ -15,7 +15,7 @@ puppeteer: {
 
 client.on('qr', qr => {
     QRCode.toDataURL(qr, function (err, url) {
-  console.log(url)
+  console.log("http://"+url)
 })
 });
 
