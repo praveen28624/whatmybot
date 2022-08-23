@@ -2,7 +2,7 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 const fs = require('fs');
 const fsp = require('fs/promises');
 const { ARQ } = require("arq-js");
-const qrcode = require('qrcode-terminal');
+var QRCode = require('qrcode');
 
 const arq = new ARQ("https://arq.hamker.in","EZHTQV-JGRJVJ-FVSZND-YAEONX-ARQ");
 
@@ -14,7 +14,9 @@ puppeteer: {
 });
 
 client.on('qr', qr => {
-    qrcode.generate(qr, {small: false});
+    QRCode.toDataURL(qr, function (err, url) {
+  console.log(url)
+})
 });
 
 client.on('ready', () => {
