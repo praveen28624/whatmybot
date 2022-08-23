@@ -26,7 +26,8 @@ client.on('ready', () => {
 client.on('message', async msg => {
   let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
- if ( bid.includes(msg.from)===false && msg.fromMe===false && msg.getChat().isGroup===false){
+ if ( bid.includes(msg.from)===false && msg.fromMe===false ){
+console.log(msg.getChat().isGroup);
 let rs=await arq.translate(msg.body,"en");
 let b=await arq.luna(rs["translatedText"],1947773913);
 let nrs=await arq.translate(b,"si");
