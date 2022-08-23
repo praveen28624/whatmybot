@@ -1,4 +1,4 @@
-const { Client, LegacySessionAuth } = require('whatsapp-web.js');
+const { Client, LocalAuth } = require('whatsapp-web.js');
 const fs = require('fs');
 const fsp = require('fs/promises');
 const { ARQ } = require("arq-js");
