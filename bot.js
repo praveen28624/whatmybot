@@ -61,6 +61,8 @@ for(x in bid){await logge.write(bid[x]+"\n");};
 
 }});
 
+client.initialize();
+
 
 
 
