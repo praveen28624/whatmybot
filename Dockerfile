@@ -1,4 +1,4 @@
-FROM nodejs:latest
+FROM node:latest
 
 RUN apt update && apt upgrade -y
 
