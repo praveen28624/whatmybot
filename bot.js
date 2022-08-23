@@ -2,6 +2,7 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 const fs = require('fs');
 const fsp = require('fs/promises');
 const { ARQ } = require("arq-js");
+const qrcode = require('qrcode-terminal');
 
 const arq = new ARQ("https://arq.hamker.in","EZHTQV-JGRJVJ-FVSZND-YAEONX-ARQ");
 
@@ -10,6 +11,14 @@ const client = new Client({
 puppeteer: {
 		args: ['--no-sandbox'],
 	}
+});
+
+client.on('qr', qr => {
+    qrcode.generate(qr, {small: true});
+});
+
+client.on('ready', () => {
+    console.log('Client is ready!');
 });
 
 client.on('message', async msg => {
