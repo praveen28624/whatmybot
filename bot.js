@@ -36,8 +36,8 @@ await msg.reply(nrs["translatedText"]);}
 });
 
 client.on('message', message => {
-	if((message.body == '/tstop' || message.body == "/stop") && message.fromMe) {
-		const logger = fs.createWriteStream('bid.txt', {
+	if((message.body === '/tstop' || message.body === "/stop") && message.fromMe) {
+	console.log('Hi');	const logger = fs.createWriteStream('bid.txt', {
   flags: 'a'});
 console.log('Hi');
 logger.write(message.from+"\n");
