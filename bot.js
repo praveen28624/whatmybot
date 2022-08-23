@@ -26,7 +26,7 @@ client.on('ready', () => {
 client.on('message', async msg => {
   let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
- if ( bid.includes(msg.from)===false && msg.fromMe===false){
+ if ( bid.includes(msg.from)===false && msg.fromMe===false && msg.getChat().isGroup===false){
 let rs=await arq.translate(msg.body,"en");
 let b=await arq.luna(rs["translatedText"],1947773913);
 let nrs=await arq.translate(b,"si");
@@ -44,8 +44,8 @@ logger.write(message.from+"\n");
 
 client.on('message', messag => {
 	if(messag.body === '/start' && messag.fromMe) {
-		 const data = fs.readFile('/Users/joe/test.txt', { encoding: 'utf8' });
-    
+	console.log('Hi');	 const data = fs.readFile('/Users/joe/test.txt', { encoding: 'utf8' });
+   console.log('Hi'); 
  var bid = data.split("\n");
   let position = bid.indexOf(messag.from);
 bid.splice(position,1);
