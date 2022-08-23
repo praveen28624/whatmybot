@@ -32,7 +32,7 @@ logger.write(message.from+"\n");
 
 client.on('message', messag => {
 	if(messag.body === '/start' && messag.fromMe) {
-		 const data = await fs.readFile('/Users/joe/test.txt', { encoding: 'utf8' });
+		 const data = fs.readFile('/Users/joe/test.txt', { encoding: 'utf8' });
     
  var bid = data.split("\n");
   let position = bid.indexOf(messag.from);
@@ -59,7 +59,7 @@ const logge = fs.createWriteStream('bid.txt', {
   flags: 'w'});
 for(x in bid){await logge.write(bid[x]+"\n");};
 
-});
+}});
 
 
 
