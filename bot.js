@@ -3,14 +3,13 @@ const fs = require('fs');
 const fsp = require('fs/promises');
 const { ARQ } = require("arq-js");
 
-let session = JSON.parse("");
-
 const arq = new ARQ("https://arq.hamker.in","EZHTQV-JGRJVJ-FVSZND-YAEONX-ARQ");
 
 const client = new Client({
-  authStrategy: new LegacySessionAuth({
-    session: session
-  })
+  authStrategy: new LocalAuth(),
+puppeteer: {
+		args: ['--no-sandbox'],
+	}
 });
 
 client.on('message', async msg => {
