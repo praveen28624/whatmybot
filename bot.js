@@ -1,5 +1,4 @@
 const { Client, LocalAuth } = require('whatsapp-web.js');
-const fs = require('fs');
 const fsp = require('fs/promises');
 const { ARQ } = require("arq-js");
 var QRCode = require('qrcode');
@@ -24,15 +23,16 @@ client.on('ready', () => {
 });
 
 client.on('message', async msg => {
-  let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
+ const chat = await msg.getChat()
+let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
- if ( bid.includes(msg.from)===false && msg.fromMe===false ){
-console.log(msg);
-console.log(msg.getChat());
+ if ( bid.includes(msg.from)===false && msg.fromMe===false && chat.isGroup===false){
 let rs=await arq.translate(msg.body,"en");
 let b=await arq.luna(rs["translatedText"],1947773913);
 let nrs=await arq.translate(b,"si");
-await msg.reply(nrs["translatedText"]);}
+await msg.reply(nrs["translatedText"]);} 
+else if () {
+}
 });
 
 client.on('message', message => {
