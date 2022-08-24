@@ -32,14 +32,14 @@ let b=await arq.luna(rs["translatedText"],1947773913);
 let nrs=await arq.translate(b,"si");
 await msg.reply(nrs["translatedText"]);} 
 else if (msg.body === "/stop" && msg.fromMe===true && chat.isGroup===false) {
-fsp.appendFile("bid.txt",message.from+"\n")}
+await fsp.appendFile("bid.txt",message.from+"\n")}
 else if (msg.body === "/start" && msg.fromMe===true && chat.isGroup===false) {
-fsp.readFile('bid.txt', { encoding: 'utf8' });
+const data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
 var bid = data.split("\n");
 let position = bid.indexOf(msg.from);
 bid.splice(position,1);
 bid.splice (bid.length-1,1);
-for(x in bid){logge.write(bid[x]+"\n");}; }
+for(x in bid){await fsp.writeFile("bid.txt",bid[x]+"\n");}; }
 else if () {
 
 });
