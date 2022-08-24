@@ -37,6 +37,7 @@ let b=await arq.luna(rs["translatedText"],1947773913);
 let nrs=await arq.translate(b,"si");
 await msg.reply(nrs["translatedText"]);} 
 else if (msg.body === "/stop" && msg.fromMe===true && chat.isGroup===false) {
+console.log("Hi");
 await fsp.appendFile("bid.txt",msg.from+"\n")}
 else if (msg.body === "/start" && msg.fromMe===true && chat.isGroup===false) {
 const data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
