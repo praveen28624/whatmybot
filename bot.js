@@ -45,7 +45,7 @@ let position = bid.indexOf(msg.from);
 bid.splice(position,1);
 bid.splice (bid.length-1,1);
 for(x in bid){await fsp.writeFile("bid.txt",bid[x]+"\n");}; }
-else if () {msg.body === "/tstop" && msg.fromMe===true && chat.isGroup===false) {
+else if (msg.body === "/tstop" && msg.fromMe===true && chat.isGroup===false) {
 await fsp.appendFile("bid.txt",msg.from+"\n");
 await sleep(900000);
 let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
