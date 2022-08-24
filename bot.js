@@ -22,6 +22,10 @@ client.on('ready', () => {
     console.log('Client is ready!');
 });
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+};
+
 client.on('message', async msg => {
  const chat = await msg.getChat()
 let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
@@ -32,7 +36,7 @@ let b=await arq.luna(rs["translatedText"],1947773913);
 let nrs=await arq.translate(b,"si");
 await msg.reply(nrs["translatedText"]);} 
 else if (msg.body === "/stop" && msg.fromMe===true && chat.isGroup===false) {
-await fsp.appendFile("bid.txt",message.from+"\n")}
+await fsp.appendFile("bid.txt",msg.from+"\n")}
 else if (msg.body === "/start" && msg.fromMe===true && chat.isGroup===false) {
 const data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
 var bid = data.split("\n");
@@ -40,47 +44,16 @@ let position = bid.indexOf(msg.from);
 bid.splice(position,1);
 bid.splice (bid.length-1,1);
 for(x in bid){await fsp.writeFile("bid.txt",bid[x]+"\n");}; }
-else if () {
-
-});
-
-client.on('message', message => {
-	if((message.body === '/tstop' || message.body === "/stop") && message.fromMe) {
-	console.log('Hi');	const logger = fs.createWriteStream('bid.txt', {
-  flags: 'a'});
-console.log('Hi');
-logger.write(message.from+"\n");
-	}
-});
-
-client.on('message', messag => {
-	if(messag.body === '/start' && messag.fromMe)const data = fs.readFile('/Users/joe/test.txt', { encoding: 'utf8' });
-   var bid = data.split("\n");
-  let position = bid.indexOf(messag.from);
-bid.splice(position,1);
-bid.splice (bid.length-1,1);
-const logge = fs.createWriteStream('bid.txt', {
-  flags: 'w'});
-for(x in bid){logge.write(bid[x]+"\n");};	}
-});
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-};
-
-client.on('message', async mssg => {
-if(mssg.body === '/tstop' && mssg.fromMe) {
+else if () {msg.body === "/tstop" && msg.fromMe===true && chat.isGroup===false) {
+await fsp.appendFile("bid.txt",msg.from+"\n");
 await sleep(900000);
-		 let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
- var bid = data.split("\n");
-  let position = bid.indexOf(mssg.from);
+let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
+var bid = data.split("\n");
+let position = bid.indexOf(msg.from);
 bid.splice(position,1);
 bid.splice (bid.length-1,1);
-const logge = fs.createWriteStream('bid.txt', {
-  flags: 'w'});
-for(x in bid){await logge.write(bid[x]+"\n");};
-
-}});
+for(x in bid){await fsp.writeFile("bid.txt",bid[x]+"\n");}; }
+});
 
 client.initialize();
 
