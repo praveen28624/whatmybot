@@ -29,7 +29,7 @@ function sleep(ms) {
 client.on('message', async msg => {
  const chat = await msg.getChat();
 console.log(typeof(msg.body));
-console.log(msg.body);
+console.log(msg);
 let data = await fsp.readFile('bid.txt', { encoding: 'utf8' });
  var bid = data.split("\n");
  if ( bid.includes(msg.from)===false && msg.fromMe===false && chat.isGroup===false){
